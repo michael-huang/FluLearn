@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/config/asset_dir.dart';
 import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/ui/widget/back_screen.dart';
 import 'package:flutter_app/ui/widget/markdown_viewer.dart';
 
-const _PATH = 'res/PRIVACY.md';
+const _PATH = AssetDir.docs + '/PrivacyPolicy.md';
 
 ///
 /// 隐私声明页

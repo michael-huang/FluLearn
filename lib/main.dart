@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/config/constant.dart';
 import 'package:flutter_app/generated/i18n.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
+import 'package:flutter_app/toolkit/log.dart';
+import 'package:flutter_app/toolkit/overlay_style.dart';
+import 'package:flutter_app/toolkit/route_navigator.dart';
 import 'package:flutter_app/toolkit/theme_kit.dart';
 import 'package:flutter_app/ui/empty/empty_router.dart';
 import 'package:flutter_app/ui/guide/guide_router.dart';
@@ -10,10 +14,6 @@ import 'package:flutter_app/ui/home/home_page.dart';
 import 'package:flutter_app/ui/home/home_router.dart';
 import 'package:flutter_app/ui/login/login_router.dart';
 import 'package:flutter_app/ui/splash/splash_page.dart';
-import 'package:flutter_app/toolkit/l.dart';
-import 'package:flutter_app/toolkit/language_kit.dart';
-import 'package:flutter_app/toolkit/overlay_style.dart';
-import 'package:flutter_app/toolkit/route_navigator.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 final GlobalKey<AppWrapperState> appStateKey = new GlobalKey<AppWrapperState>();
@@ -102,6 +102,7 @@ class AppWrapperState extends State<AppWrapper> {
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         S.delegate,
+        //I18NLocalizations.delegate,
       ],
     );
   }

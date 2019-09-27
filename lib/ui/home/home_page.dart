@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/toolkit/image_loader.dart';
-import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/overlay_style.dart';
 import 'package:flutter_app/ui/home/home_drawer.dart';
 import 'package:flutter_app/ui/login/login_page.dart';
@@ -38,28 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   void initData() {
     _pageList = [
-      Column(
-        children: <Widget>[
-          RaisedButton(
-            child: Text("简体中文"),
-            onPressed: () {
-              LanguageKit.change(tag: "zh-CN");
-            },
-          ),
-          RaisedButton(
-            child: Text("繁体中文"),
-            onPressed: () {
-              LanguageKit.change(tag: "zh-TW");
-            },
-          ),
-          RaisedButton(
-            child: Text("英语"),
-            onPressed: () {
-              LanguageKit.change(tag: "en-US");
-            },
-          ),
-        ],
-      ),
+      Text("考试"),
       Text("提问"),
       Text("下载"),
       Text("学习"),

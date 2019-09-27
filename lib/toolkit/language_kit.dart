@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/prefs_key.dart';
 import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/main.dart';
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 
 ///
 /// 本地化语言工具类
@@ -15,7 +15,7 @@ import 'package:flutter_app/toolkit/l.dart';
 /// 国家或地区代码参见 https://baike.baidu.com/item/ISO%203166-1
 ///
 class LanguageKit {
-  static const List<String> SUPPORT_TAGS = ['', 'en_US', 'zh_CN'];
+  static const List<String> SUPPORT_TAGS = ['', 'en', 'zh_CN'];
   static int _languageIndex = -1;
 
   static Locale get locale {

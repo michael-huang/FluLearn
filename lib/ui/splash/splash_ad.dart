@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/toolkit/image_loader.dart';
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/toolkit/route_navigator.dart';
 
 ///

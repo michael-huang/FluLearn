@@ -25,14 +25,13 @@ build/
 .dart_tool/
 .flutter-plugins
 .packages
-**/generated/
-!**/generated/i18n.dart
+**/generated
 .pub-cache/
 .pub/
 pubspec.lock
 
 # Android related
-gen/
+**/gen
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
 **/android/captures/

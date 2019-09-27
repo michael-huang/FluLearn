@@ -1,4 +1,4 @@
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 
 ///
 /// 重复操作、快速点击

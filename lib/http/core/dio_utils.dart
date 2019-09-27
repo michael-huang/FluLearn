@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/config/constant.dart';
 import 'package:flutter_app/entity_factory.dart';
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 
 import 'base_resp.dart';
 import 'error_handle.dart';

@@ -11,18 +11,18 @@ import 'package:flutter_app/ui/widget/back_screen.dart';
 ///
 /// Adapted from [LicensePage] in 'about.dart' of flutter
 ///
-class LicensesPage extends StatefulWidget {
-  const LicensesPage({
-    this.legalese,
+class OpenSourceLicensePage extends StatefulWidget {
+  const OpenSourceLicensePage({
+    this.openSourceLegalese,
   });
 
-  final String legalese;
+  final String openSourceLegalese;
 
   @override
-  _LicensesPageState createState() => _LicensesPageState();
+  _OpenSourceLicensePageState createState() => _OpenSourceLicensePageState();
 }
 
-class _LicensesPageState extends State<LicensesPage> {
+class _OpenSourceLicensePageState extends State<OpenSourceLicensePage> {
   final List<Widget> _licenses = <Widget>[];
   bool _loaded = false;
 
@@ -50,7 +50,7 @@ class _LicensesPageState extends State<LicensesPage> {
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
               children: <Widget>[
                 Text(
-                  widget.legalese ?? '',
+                  widget.openSourceLegalese ?? '',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                   ),

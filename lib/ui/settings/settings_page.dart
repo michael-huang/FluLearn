@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/generated/i18n.dart';
-import 'package:flutter_app/toolkit/l.dart';
 import 'package:flutter_app/toolkit/language_kit.dart';
+import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/toolkit/theme_kit.dart';
 import 'package:flutter_app/ui/widget/back_screen.dart';
 
@@ -57,6 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
         children: <Widget>[
           ListView.builder(
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemCount: LanguageKit.SUPPORT_TAGS.length,
             itemBuilder: (context, index) {
               return RadioListTile(

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_app/config/prefs_key.dart';
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'error_handle.dart';
@@ -22,7 +22,7 @@ class AuthInterceptor extends Interceptor {
     String accessToken = sp.getString(PrefsKey.access_token);
     if (accessToken.isNotEmpty) {
       options.headers["Authorization"] =
-      "Bearer ${sp.getString(PrefsKey.access_token)}";
+          "Bearer ${sp.getString(PrefsKey.access_token)}";
     }
     return super.onRequest(options);
   }

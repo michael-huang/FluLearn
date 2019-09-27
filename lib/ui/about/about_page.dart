@@ -71,7 +71,7 @@ class _AboutPageState extends State<AboutPage> {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 10, top: 15),
                 child: Text(
-                  S.of(context).copyrightStatement(Universal.currentYear),
+                  S.of(context).copyrightDisclaimer(Universal.currentYear),
                   style: TextStyle(fontSize: 10),
                 ),
               ),
@@ -109,8 +109,8 @@ class _AboutPageState extends State<AboutPage> {
             onTap: () {
               return RouteNavigator.goPage(
                   context,
-                  LicensesPage(
-                    legalese: S.of(context).copyrightLegalese,
+                  OpenSourceLicensePage(
+                    openSourceLegalese: S.of(context).openSourceLegalese,
                   ));
             },
           ),

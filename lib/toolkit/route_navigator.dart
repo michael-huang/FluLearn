@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 import 'package:flutter/material.dart';
-import 'package:flutter_app/toolkit/l.dart';
+import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/ui/web/web_page.dart';
 import 'package:flutter_app/ui/widget/state_layout.dart';
 import 'package:flutter_app/ui/widget/title_bar.dart';
