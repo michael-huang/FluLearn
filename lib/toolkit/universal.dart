@@ -1,6 +1,6 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/widgets.dart' show BuildContext;
-import 'package:flutter_app/generated/i18n.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/toaster.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
@@ -12,7 +12,8 @@ class Universal {
   /// 拨打电话
   ///
   static Future<bool> callPhone(BuildContext context, String phone) async {
-    return tryOpenUrl('tel:' + phone, S.of(context).toastCallPhoneFailed);
+    return tryOpenUrl(
+        'tel:' + phone, I18N.translate(context, 'toastCallPhoneFailed'));
   }
 
   ///

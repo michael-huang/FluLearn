@@ -114,7 +114,7 @@ class _WebPageState extends State<WebPage> {
       InAppWebViewController controller, String url, int code, String message) {
     _notifyLoadStateChanged(false);
     L.d("page error: url=$url, code=$code, message=$message");
-    RouteNavigator.goPath(context, RouteUrl.empty, replace: true);
+    RouteNavigator.goPath(context, RouteUrl.EMPTY, replace: true);
   }
 
   void _onLoadStop(InAppWebViewController controller, String url) {
@@ -133,7 +133,7 @@ class _WebPageState extends State<WebPage> {
       InAppWebViewController controller, String url) {
     L.d("should override url loading: $url");
     _url = url;
-    if (url.startsWith(RouteUrl.scheme)) {
+    if (url.startsWith(RouteUrl.SCHEME)) {
       RouteNavigator.goPath(context, url);
       return;
     }

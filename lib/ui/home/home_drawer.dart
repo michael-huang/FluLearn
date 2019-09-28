@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide LicensePage;
-import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/toolkit/image_loader.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/overlay_style.dart';
 import 'package:flutter_app/toolkit/route_navigator.dart';
 import 'package:flutter_app/toolkit/toaster.dart';
@@ -92,7 +92,7 @@ class HomeDrawer extends StatelessWidget {
             children: <Widget>[
               ListTile(
                 leading: Icon(Icons.settings),
-                title: Text(S.of(context).titleSettings),
+                title: Text(I18N.translate(context, 'titleSettings')),
                 trailing: new Icon(Icons.chevron_right),
                 onTap: () {
                   return RouteNavigator.goPage(context, new SettingsPage());
@@ -101,7 +101,7 @@ class HomeDrawer extends StatelessWidget {
               Divider(),
               ListTile(
                 leading: Icon(Icons.info),
-                title: Text(S.of(context).titleAbout),
+                title: Text(I18N.translate(context, 'titleAbout')),
                 trailing: new Icon(Icons.chevron_right),
                 onTap: () {
                   return RouteNavigator.goPage(context, new AboutPage());

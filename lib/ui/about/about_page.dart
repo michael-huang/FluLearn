@@ -1,7 +1,7 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/toolkit/image_loader.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/route_navigator.dart';
 import 'package:flutter_app/toolkit/universal.dart';
 import 'package:flutter_app/ui/about/change_log_page.dart';
@@ -36,7 +36,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     return BackScreen(
       intrinsicHeight: true,
-      title: S.of(context).titleAbout,
+      title: I18N.translate(context, 'titleAbout'),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
@@ -71,7 +71,8 @@ class _AboutPageState extends State<AboutPage> {
               child: Padding(
                 padding: EdgeInsets.only(bottom: 10, top: 15),
                 child: Text(
-                  S.of(context).copyrightDisclaimer(Universal.currentYear),
+                  I18N.translate(context, 'copyrightDisclaimer',
+                      {'year': Universal.currentYear}),
                   style: TextStyle(fontSize: 10),
                 ),
               ),
@@ -88,7 +89,7 @@ class _AboutPageState extends State<AboutPage> {
         children: <Widget>[
           Divider(),
           ListTile(
-            title: Text(S.of(context).titleChangeLog),
+            title: Text(I18N.translate(context, 'titleChangeLog')),
             onTap: () {
               RouteNavigator.goPage(context, new ChangeLogPage());
             },
@@ -96,7 +97,7 @@ class _AboutPageState extends State<AboutPage> {
           ),
           Divider(),
           ListTile(
-            title: Text(S.of(context).titleWebSite),
+            title: Text(I18N.translate(context, 'titleWebSite')),
             trailing: new Icon(Icons.chevron_right),
             onTap: () {
               return RouteNavigator.goWeb(context, 'http://qqtheme.cn');
@@ -104,19 +105,20 @@ class _AboutPageState extends State<AboutPage> {
           ),
           Divider(),
           ListTile(
-            title: Text(S.of(context).titleLicenses),
+            title: Text(I18N.translate(context, 'titleLicenses')),
             trailing: new Icon(Icons.chevron_right),
             onTap: () {
               return RouteNavigator.goPage(
                   context,
                   OpenSourceLicensePage(
-                    openSourceLegalese: S.of(context).openSourceLegalese,
+                    openSourceLegalese:
+                        I18N.translate(context, 'openSourceLegalese'),
                   ));
             },
           ),
           Divider(),
           ListTile(
-            title: Text(S.of(context).titlePrivacy),
+            title: Text(I18N.translate(context, 'titlePrivacy')),
             trailing: new Icon(Icons.chevron_right),
             onTap: () {
               return RouteNavigator.goPage(context, PrivacyPage());

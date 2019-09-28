@@ -1,8 +1,7 @@
 {
-  "@@locale": "zh_CN",
   "appName": "Flutter学习",
   "splashAdSkip": "跳过",
-  "copyrightStatement": "©${year} 穿青人李玉江 版权所有",
+  "copyrightStatement": "© {year} 穿青人李玉江 版权所有",
   "copyrightLegalese": "免责声明\n该软件是免费供您个人使用的，如果它不能按预期工作，您应该知道，它来没有任何形式的保证。软件中使用的第三方软件按原样分发，不作任何保证。第三方软件有关详细信息，请参阅以下适用许可证：",
   "toastPressAgainToExit": "再按一次退出应用程序",
   "toastCallPhoneFailed": "拨号失败",

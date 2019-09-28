@@ -43,10 +43,6 @@ dependencies:
   fluttertoast: ^3.1.0
   # HTTP客户端 https://github.com/flutterchina/dio
   dio: ^2.1.13
-  # 国际化方案 https://github.com/ilteoood/flutter_i18n
-  flutter_i18n: ^0.6.4
-  # 主题 https://github.com/Norbert515/dynamic_theme
-  dynamic_theme: ^1.0.1
   # 路由框架 https://github.com/theyakka/fluro
   fluro: ^1.5.1
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
@@ -100,5 +96,5 @@ flutter:
     - images/
     - images/home/
     - docs/
-    #- locales/
+    - languages/
 

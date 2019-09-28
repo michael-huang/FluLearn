@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_app/generated/i18n.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/ui/widget/back_screen.dart';
 
 ///
@@ -36,7 +36,7 @@ class _OpenSourceLicensePageState extends State<OpenSourceLicensePage> {
   Widget build(BuildContext context) {
     return BackScreen(
       presetScroll: false,
-      title: S.of(context).titleLicenses,
+      title: I18N.translate(context, 'titleLicenses'),
       // All of the licenses page text is English. We don't want localized text
       // or text direction.
       body: Localizations.override(

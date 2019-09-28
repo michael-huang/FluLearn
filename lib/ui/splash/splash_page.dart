@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/config/constant.dart';
 import 'package:flutter_app/config/prefs_key.dart';
 import 'package:flutter_app/config/route_url.dart';
-import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/toolkit/image_loader.dart';
+import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/toolkit/universal.dart';
 import 'package:flutter_app/ui/splash/splash_ad.dart';
@@ -57,14 +57,14 @@ class _SplashPageState extends State<SplashPage> {
 
   void _obtainSplashImage() {
     setState(() {
-      _imageUrl = SpUtil.getString(PrefsKey.splash_image_url, defValue: '');
+      _imageUrl = SpUtil.getString(PrefsKey.SPLASH_IMAGE_URL, defValue: '');
       L.d("imageUrl=$_imageUrl");
     });
   }
 
   void _updateSplashImage() {
     Future.microtask(() => _fetchFromNetwork())
-        .timeout(new Duration(seconds: Constant.splashSeconds))
+        .timeout(new Duration(seconds: Constant.SPLASH_SECONDS))
         .catchError((e) {
       L.e("fetch splash image timeout", e);
     });
@@ -75,15 +75,15 @@ class _SplashPageState extends State<SplashPage> {
     String imageUrl =
         "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3095878455,1424909459&fm=26&gp=0.jpg";
     L.d("imageUrl=$imageUrl");
-    SpUtil.putString(PrefsKey.splash_image_url, imageUrl);
+    SpUtil.putString(PrefsKey.SPLASH_IMAGE_URL, imageUrl);
   }
 
   @override
   Widget build(BuildContext context) {
-    final countdownSeconds = Constant.splashSeconds;
+    final countdownSeconds = Constant.SPLASH_SECONDS;
     final bool noAd = TextUtil.isEmpty(_imageUrl);
-    String bottomText =
-        S.of(context).copyrightDisclaimer(Universal.currentYear);
+    String bottomText = I18N.translate(
+        context, 'copyrightStatement', {"year": Universal.currentYear});
     if (!TextUtil.isEmpty(_appName)) {
       bottomText = "$_appName v$_version build$_buildNumber\n$bottomText";
     }
@@ -91,10 +91,10 @@ class _SplashPageState extends State<SplashPage> {
       child: SplashAd(
         backgroundColor: Colors.white,
         seconds: countdownSeconds,
-        navigateTo: RouteUrl.home,
+        navigateTo: RouteUrl.HOME,
         imageUrl: noAd ? defaultImageUrl : _imageUrl,
         imagePlaceholder: defaultImageUrl,
-        skipButtonText: noAd ? null : S.of(context).splashAdSkip,
+        skipButtonText: noAd ? null : I18N.translate(context, 'splashAdSkip'),
         bottomText: Text(
           bottomText,
           textAlign: TextAlign.center,

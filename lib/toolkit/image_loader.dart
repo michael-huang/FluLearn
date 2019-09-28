@@ -8,12 +8,12 @@ import 'package:flutter_app/config/asset_dir.dart';
 /// Adapted from https://github.com/simplezhli/flutter_deer/.../image_utils.dart
 ///
 class ImageLoader {
-  static const String placeholder = AssetDir.images + '/ic_placeholder.png';
+  static const String placeholder = AssetDir.IMAGES + '/ic_placeholder.png';
 
   static String assetPath(String name) {
-    return name.startsWith(AssetDir.images)
+    return name.startsWith(AssetDir.IMAGES)
         ? name
-        : AssetDir.images + '/' + name;
+        : AssetDir.IMAGES + '/' + name;
   }
 
   ///

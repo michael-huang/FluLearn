@@ -19,10 +19,10 @@ class AuthInterceptor extends Interceptor {
   @override
   onRequest(RequestOptions options) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    String accessToken = sp.getString(PrefsKey.access_token);
+    String accessToken = sp.getString(PrefsKey.ACCESS_TOKEN);
     if (accessToken.isNotEmpty) {
       options.headers["Authorization"] =
-          "Bearer ${sp.getString(PrefsKey.access_token)}";
+          "Bearer ${sp.getString(PrefsKey.ACCESS_TOKEN)}";
     }
     return super.onRequest(options);
   }

@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart'
     show CupertinoThemeData, CupertinoTextThemeData;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config/prefs_key.dart';
-import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/main.dart';
 
 ///
@@ -21,7 +20,7 @@ class ThemeKit {
   static ThemeData _themeData;
 
   static ThemeData get themeData {
-    //Theme.of(context)
+    //Same as `Theme.of(context)`
     if (_themeData == null) {
       _themeData = generate(brightness: brightness, color: color, font: font);
     }
@@ -30,7 +29,7 @@ class ThemeKit {
 
   static Brightness get brightness {
     if (_brightnessIndex == -1) {
-      _brightnessIndex = SpUtil.getInt(PrefsKey.theme_brightness_index,
+      _brightnessIndex = SpUtil.getInt(PrefsKey.THEME_BRIGHTNESS_INDEX,
           defValue: Brightness.light.index);
     }
     return Brightness.values[_brightnessIndex];
@@ -38,7 +37,7 @@ class ThemeKit {
 
   static MaterialColor get color {
     if (_color == null) {
-      int index = SpUtil.getInt(PrefsKey.theme_color_index, defValue: 5);
+      int index = SpUtil.getInt(PrefsKey.THEME_COLOR_INDEX, defValue: 5);
       if (index == -1) {
         index = 0;
       }
@@ -49,7 +48,7 @@ class ThemeKit {
 
   static String get font {
     if (_font == null) {
-      int index = SpUtil.getInt(PrefsKey.theme_font_index, defValue: 0);
+      int index = SpUtil.getInt(PrefsKey.THEME_FONT_INDEX, defValue: 0);
       if (index == -1) {
         index = 0;
       }
@@ -83,19 +82,19 @@ class ThemeKit {
     _themeData = generate(brightness: brightness, color: color, font: font);
     appStateKey.currentState.changeThemeData(_themeData);
     _brightnessIndex = brightness.index;
-    SpUtil.putInt(PrefsKey.theme_brightness_index, _brightnessIndex);
+    SpUtil.putInt(PrefsKey.THEME_BRIGHTNESS_INDEX, _brightnessIndex);
     int colorIndex = SUPPORT_COLORS.indexOf(color);
     if (colorIndex == -1) {
       colorIndex = 0;
     }
     _color = SUPPORT_COLORS[colorIndex];
-    SpUtil.putInt(PrefsKey.theme_color_index, colorIndex);
+    SpUtil.putInt(PrefsKey.THEME_COLOR_INDEX, colorIndex);
     int fontIndex = SUPPORT_FONTS.indexOf(font);
     if (fontIndex == -1) {
       fontIndex = 0;
     }
     _font = SUPPORT_FONTS[fontIndex];
-    SpUtil.putInt(PrefsKey.theme_font_index, fontIndex);
+    SpUtil.putInt(PrefsKey.THEME_FONT_INDEX, fontIndex);
   }
 
   ///
@@ -144,13 +143,6 @@ class ThemeKit {
     );
 
     return themeData;
-  }
-
-  static String fontFriendlyName(BuildContext context, int index) {
-    switch (index) {
-      default:
-        return S.of(context).settingsAutoBySystem;
-    }
   }
 
   static InputDecorationTheme _inputDecorationTheme(ThemeData theme) {

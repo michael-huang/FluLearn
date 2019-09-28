@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter_app/config/route_url.dart';
-import 'package:flutter_app/toolkit/route_navigator.dart' show IRouterDefinition;
+import 'package:flutter_app/toolkit/route_navigator.dart'
+    show IRouterDefinition;
 import 'package:flutter_app/ui/empty/empty_page.dart';
 
 ///
@@ -9,7 +10,7 @@ import 'package:flutter_app/ui/empty/empty_page.dart';
 class EmptyRouter implements IRouterDefinition {
   @override
   void defineRouter(Router router) {
-    router.define(RouteUrl.empty, handler: Handler(handlerFunc: (_, params) {
+    router.define(RouteUrl.EMPTY, handler: Handler(handlerFunc: (_, params) {
       return EmptyPage();
     }));
   }

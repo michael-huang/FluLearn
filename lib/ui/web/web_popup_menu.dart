@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/generated/i18n.dart';
 import 'package:flutter_app/toolkit/route_navigator.dart';
 import 'package:flutter_app/toolkit/toaster.dart';
 import 'package:flutter_app/toolkit/universal.dart';
@@ -22,7 +21,7 @@ class WebActionMenu extends StatelessWidget {
           RouteNavigator.goBack(context);
         } else if ('copy' == value) {
           Clipboard.setData(new ClipboardData(text: url));
-          Toaster.showShort(S.of(context).toastCopyWebUrl);
+          Toaster.showShort('toastCopyWebUrl');
         } else if ('browser' == value) {
           Universal.tryOpenUrl(url);
         }
@@ -31,15 +30,15 @@ class WebActionMenu extends StatelessWidget {
         return <PopupMenuItem<String>>[
           new PopupMenuItem(
             value: "copy",
-            child: new Text(S.of(context).webMenuCopyLink),
+            child: new Text('webMenuCopyLink'),
           ),
           new PopupMenuItem(
             value: "browser",
-            child: new Text(S.of(context).webMenuOpenBrowser),
+            child: new Text('webMenuOpenBrowser'),
           ),
           new PopupMenuItem(
             value: "close",
-            child: new Text(S.of(context).webMenuClose),
+            child: new Text('webMenuClose'),
           ),
         ];
       },

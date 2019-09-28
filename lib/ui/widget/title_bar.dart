@@ -11,7 +11,7 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   const TitleBar({
     this.backgroundColor,
     this.leading,
-    this.leadingIcon: AssetDir.images + '/ic_back_black.png',
+    this.leadingIcon: AssetDir.IMAGES + '/ic_back_black.png',
     this.title: '',
     this.centerTitle: true,
     this.action,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/generated/i18n.dart';
+import 'package:flutter_app/config/constant.dart';
 import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/toolkit/theme_kit.dart';
@@ -28,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return BackScreen(
-      title: S.of(context).titleSettings,
+      title: I18N.translate(context, 'titleSettings'),
       body: Column(
         children: <Widget>[
           SizedBox(height: 20),
@@ -49,16 +49,27 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(S.of(context).settingsLanguage),
+            Text(I18N.translate(context, 'settingsLanguage')),
             Text(LanguageKit.toFriendlyName(context, _languageIdx)),
           ],
         ),
         leading: Icon(Icons.public),
         children: <Widget>[
+          RadioListTile(
+            value: -1,
+            onChanged: (index) {
+              setState(() {
+                _languageIdx = index;
+                LanguageKit.change(tagIndex: _languageIdx);
+              });
+            },
+            groupValue: _languageIdx,
+            title: Text(LanguageKit.toFriendlyName(context, -1)),
+          ),
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: LanguageKit.SUPPORT_TAGS.length,
+            itemCount: Constant.SUPPORT_LANGUAGE.length,
             itemBuilder: (context, index) {
               return RadioListTile(
                 value: index,
@@ -80,27 +91,43 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Widget _buildBrightnessTile(BuildContext context) {
     return Material(
-      child: ListTile(
-        title: Text(S.of(context).settingsDarkMode),
-        onTap: () {
-          ThemeKit.changeBrightness(ThemeKit.brightness == Brightness.light
-              ? Brightness.dark
-              : Brightness.light);
-        },
-        leading: Icon(
+      child: SwitchListTile(
+        secondary: Icon(
           ThemeKit.brightness == Brightness.light
               ? Icons.brightness_2
               : Icons.brightness_7,
         ),
-        trailing: Switch(
-            activeColor: Theme.of(context).accentColor,
-            value: ThemeKit.brightness == Brightness.dark,
-            onChanged: (value) {
-              ThemeKit.changeBrightness(
-                  value ? Brightness.dark : Brightness.light);
-            }),
+        isThreeLine: false,
+        title: Text(I18N.translate(context, 'settingsDarkMode')),
+        activeColor: Theme.of(context).accentColor,
+        value: ThemeKit.brightness == Brightness.dark,
+        onChanged: (value) {
+          ThemeKit.changeBrightness(value ? Brightness.dark : Brightness.light);
+        },
       ),
     );
+//    return Material(
+//      child: ListTile(
+//        title: Text(I18N.translate(context, 'settingsDarkMode')),
+//        onTap: () {
+//          ThemeKit.changeBrightness(ThemeKit.brightness == Brightness.light
+//              ? Brightness.dark
+//              : Brightness.light);
+//        },
+//        leading: Icon(
+//          ThemeKit.brightness == Brightness.light
+//              ? Icons.brightness_2
+//              : Icons.brightness_7,
+//        ),
+//        trailing: Switch(
+//            activeColor: Theme.of(context).accentColor,
+//            value: ThemeKit.brightness == Brightness.dark,
+//            onChanged: (value) {
+//              ThemeKit.changeBrightness(
+//                  value ? Brightness.dark : Brightness.light);
+//            }),
+//      ),
+//    );
   }
 
   Widget _buildThemeTile(BuildContext context) {
@@ -109,7 +136,7 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(S.of(context).settingsTheme),
+            Text(I18N.translate(context, 'settingsTheme')),
             Container(
               width: 15,
               height: 15,
