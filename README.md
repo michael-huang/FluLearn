@@ -1,4 +1,4 @@
-安卓 Native+Flutter 应用开发实战
+安卓 Native+Flutter 应用开发实战及踩坑记录
 
 
 ## 参考资料
@@ -15,6 +15,7 @@
 ## 踩坑记录
 
 ##### 安装完Flutter插件及Flutter SDK后，执行`flutter doctor`一直不动问题
+
 ```
 这是因为被墙了，参阅官方文档《Using Flutter in China》：https://flutter.dev/community/china
 其实也就是添加两个系统环境变量，Windows系统桌面右键点击我的电脑->属性->高级系统设置->环境变量：
@@ -25,12 +26,14 @@ FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 
 ##### 在Android Studio中准备好Dart & Flutter插件及SDK后，无法连接模拟器。
+
 ```
 因为Android SDK的位置不是默认的C:\Users\Administrator\AppData\Local\Android\Sdk导致的，新增系统环境变量“ANDROID_HOME”指向自己的Android SDK的位置，在系统环境变量“Path”增加“%ANDROID_HOME%\platform-tools”，重启Android Studio即可。
 ```
 
 
 ##### 运行提示“Android dependency 'androidx...' has different version for the compile...”。
+
 ```
 这是多个安卓模块依赖的androidx版本冲突导致的，问题讨论参见 https://github.com/flutter/flutter/issues/27254#issuecomment-525616582
 解决办法一：
@@ -61,13 +64,41 @@ subprojects {
 
 
 ##### 构建正式包报错提示“Conflicting configuration : '...' in ndk abiFilters cannot be present when splits abi filters are set : ...”
+
 ```
 这是因为使用带“--split-per-abi”参数（如flutter build apk --release --split-per-abi --target-platform android-arm）的构建命令和安卓原生的build.gradle里配置的“ndk.abiFilters”或“splits.abi”冲突，删掉“ndk.abiFilters”或“splits.abi”节点即可。
 目测截止2019.8.28，Flutter的发布包貌似只支持armeabi-v7a及arm64-v8a，使用“--target-platform android-x86”参数构建会报错"android-x86" is not an allowed value for option "target-platform"。
 ```
 
+
 ##### Flutter I18N插件生成的“generated/i18n.dart”未包含arb中设置的语言？
+
 ```
 可能是arb文件内容格式或命名不正确。必须是JSON格式，只能是一个层级的键值对，键名不能含下划线（最好用小驼峰命名法）
+```
+
+
+#### 在app/build.gradle里配置CPU架构需注意有坑
+
+- Debug模式运行main.dart打包的apk里libflutter.so只有有arm64-v8a、x86及x86_64。
+- Release模式打包的apk里libflutter.so只支持armeabi-v7a、arm64-v8a、x86、x86_64。
+- 不要在app/build.gradle里配置ndk节点，否则报错“Conflicting configuration : ...”
+```
+        ndk {
+            //支持的CPU架构：armeabi、armeabi-v7a、arm64-v8a、x86、x86_64、mips、mips64
+            //目前主流手机都支持armeabi和armeabi-v7a，电脑上的模拟器支持x86，mips基本不用于手机
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+```
+
+
+### Android studio 配置flutter 出现“no devices”
+
+这应该是Android的SDK路径不对引起的，解决办法：
+```aidl
+打开AndroidStudio的命令窗口（Terminal），输入指定你的AndroidSDK路径，如：
+flutter config --android-sdk /home/liyujiang/android-sdk 
+如果出现Setting "android-sdk" value to "/home/liyujiang/android-sdk".
+则代表成功，重启AndroidStudio就可以了。
 ```
 
