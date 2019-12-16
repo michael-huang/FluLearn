@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -40,8 +39,7 @@ class DioUtils {
         return true;
       },
       baseUrl: '',
-      contentType:
-          ContentType('application', 'x-www-form-urlencoded', charset: 'utf-8'),
+      contentType: 'application/x-www-form-urlencoded;charset=utf-8',
     );
     _dio = Dio(options);
 

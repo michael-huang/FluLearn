@@ -7,19 +7,6 @@ import 'package:flutter_app/ui/web/web_popup_menu.dart';
 import 'package:flutter_app/ui/widget/title_bar.dart';
 import 'package:flutter_inappbrowser/flutter_inappbrowser.dart';
 
-const Map<String, String> _HEADERS = {};
-const Map<String, Object> _OPTIONS = {
-  "userAgent": "Mozilla/5.0 (Linux; Android 9; POCOPHONE F1) "
-      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.136 "
-      "Mobile Safari/537.36",
-  "javaScriptEnabled": true,
-  "domStorageEnabled": true,
-  "databaseEnabled": true,
-  "useShouldOverrideUrlLoading": true,
-  "useOnLoadResource": false,
-  "mixedContentMode": "MIXED_CONTENT_ALWAYS_ALLOW",
-};
-
 ///
 /// 网页加载页
 ///
@@ -87,8 +74,17 @@ class _WebPageState extends State<WebPage> {
   Widget _buildWebView() {
     return InAppWebView(
       initialUrl: widget.url,
-      initialHeaders: _HEADERS,
-      initialOptions: _OPTIONS,
+      initialHeaders: {},
+      initialOptions: InAppWebViewWidgetOptions(
+          inAppWebViewOptions: InAppWebViewOptions(
+        debuggingEnabled: true,
+        userAgent: "Mozilla/5.0 (Linux; Android 9; POCOPHONE F1) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.136 "
+            "Mobile Safari/537.36",
+        useShouldOverrideUrlLoading: true,
+        useOnDownloadStart: true,
+        useOnLoadResource: true,
+      )),
       onWebViewCreated: _onWebViewCreated,
       shouldOverrideUrlLoading: _shouldOverrideUrlLoading,
       onLoadResource: _onLoadResource,
@@ -144,15 +140,15 @@ class _WebPageState extends State<WebPage> {
         return;
       }
       _notifyLoadStateChanged(true);
-      controller.loadUrl(url);
+      controller.loadUrl(url: url);
       return;
     }
     L.d('Url Scheme 未知： $url');
     Universal.tryOpenUrl(url);
   }
 
-  void _onLoadResource(InAppWebViewController controller,
-      WebResourceResponse response, WebResourceRequest request) {}
+  void _onLoadResource(
+      InAppWebViewController controller, LoadedResource resource) {}
 
   void _onConsoleMessage(
       InAppWebViewController controller, ConsoleMessage consoleMessage) {}

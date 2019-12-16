@@ -22,7 +22,7 @@ class AuthInterceptor extends Interceptor {
     String accessToken = sp.getString(PrefsKey.ACCESS_TOKEN);
     if (accessToken.isNotEmpty) {
       options.headers["Authorization"] =
-          "Bearer ${sp.getString(PrefsKey.ACCESS_TOKEN)}";
+      "Bearer ${sp.getString(PrefsKey.ACCESS_TOKEN)}";
     }
     return super.onRequest(options);
   }
@@ -43,10 +43,10 @@ class LoggingInterceptor extends Interceptor {
       L.d("RequestUrl: " + options.baseUrl + options.path);
     } else {
       L.d("RequestUrl: " +
-          options.baseUrl +
-          options.path +
-          "?" +
-          Transformer.urlEncodeMap(options.queryParameters));
+        options.baseUrl +
+        options.path +
+        "?" +
+        Transformer.urlEncodeMap(options.queryParameters));
     }
     L.d("RequestMethod: " + options.method);
     L.d("RequestHeaders:" + options.headers.toString());
@@ -72,7 +72,7 @@ class LoggingInterceptor extends Interceptor {
 
   @override
   onError(DioError err) {
-    L.e("----------Error-----------", err.stackTrace);
+    L.e("----------Error-----------", err.error);
     return super.onError(err);
   }
 }
@@ -108,7 +108,7 @@ class AdapterInterceptor extends Interceptor {
 
     /// 成功时，直接格式化返回
     if (response.statusCode == ExceptionHandle.success ||
-        response.statusCode == ExceptionHandle.success_not_content) {
+      response.statusCode == ExceptionHandle.success_not_content) {
       if (content == null || content.isEmpty) {
         content = DEFAULT;
       }
