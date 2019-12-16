@@ -32,8 +32,7 @@ public class MainActivity extends FlutterActivity {
 
         letStatusBarTransparent();
 
-        FlutterBridge.installApk(flutterView);
-        FlutterBridge.exitApp(flutterView);
+        FlutterBridge.registerMethod(flutterView);
     }
 
     /**

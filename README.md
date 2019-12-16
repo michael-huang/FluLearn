@@ -1,4 +1,4 @@
-安卓 Native+Flutter 应用开发实战及踩坑记录
+安卓 Native+Flutter 应用开发入门资料、亲身实战及踩坑记录
 
 
 ## 入门资料
@@ -7,17 +7,15 @@
 - [Flutter开发环境搭建（中文版）](https://flutter.cn/docs/get-started/install)、[Flutter开发环境搭建（英文版）](https://flutter.dev/docs/get-started/install)
 - [Flutter官方开发文档（中文版）](https://flutter.cn/docs)、[Flutter官方开发文档（英文版）](https://flutter.dev/docs)
 - [Flutter官方API手册（国内）](https://api.flutter-io.cn)、[Flutter官方API手册（国外）](https://api.flutter.dev)
-- [Dart与C/C++交互（国内）](https://dart.cn/guides/libraries/c-interop)、[[Dart与C/C++交互（国外）](https://dart.dev/guides/libraries/c-interop)
-- [Flutter与C/C++交互（国外）](https://flutter.dev/docs/development/platform-integration/c-interop)
+- [Dart与C/C++交互（国内）](https://dart.cn/guides/libraries/c-interop)、[Dart与C/C++交互（国外）](https://dart.dev/guides/libraries/c-interop)
+- [Flutter与C/C++交互（国内）](https://flutter.cn/docs/development/platform-integration/c-interop)、[Flutter与C/C++交互（国外）](https://flutter.dev/docs/development/platform-integration/c-interop)
 - [《Flutter实战》（在线电子书）](https://book.flutterchina.club)、[《Flutter实战》（仓库托管）](https://github.com/flutterchina/flutter-in-action)
 - [闲鱼团队技术博客Flutter专题](https://www.yuque.com/xytech/flutter)
 - [语义化版本介绍](https://semver.org/lang/zh-CN)、[依赖版本号前的插入符号(^)是什么？](https://codeday.me/bug/20190727/1549058.html)
-- 新手入门项目推荐：[flutter-go](https://github.com/alibaba/flutter-go)、[Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning)、
-[flutter_deer](https://github.com/simplezhli/flutter_deer)、[fun_android_flutter](https://github.com/phoenixsky/fun_android_flutter)
+- 新手入门项目推荐：[flutter-go](https://github.com/alibaba/flutter-go)、[Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning)、[flutter_deer](https://github.com/simplezhli/flutter_deer)、[fun_android_flutter](https://github.com/phoenixsky/fun_android_flutter)
 
 ## 典型库包
 
-- 键值存储：[shared_preferences](https://github.com/flutter/plugins/tree/master/packages/shared_preferences)
 - 获取APP版本信息：[package_info](https://github.com/flutter/plugins/tree/master/packages/package_info)
 - 启动任意Scheme的URL：[url_launcher](https://github.com/flutter/plugins/tree/master/packages/url_launcher)
 - 调试日志：[logger](https://github.com/leisim/logger)
@@ -39,7 +37,7 @@
 - 压缩存档：[archive](https://github.com/brendan-duncan/archive)
 - 手写签名：[flutter_signature_pad](https://github.com/kiwi-bop/flutter_signature_pad)
 - SQLite数据库：[sqflite](https://github.com/tekartik/sqflite)
-- ObjectBox数据库：[objectbox-dart](https://github.com/objectbox/objectbox-dart)
+- ObjectBox数据库：[objectbox](https://github.com/objectbox/objectbox-dart)
 - PDF创建：[dart_pdf](https://github.com/DavBfr/dart_pdf)
 - 腾讯QQ互联SDK：[fake_tencent](https://github.com/v7lin/fake_tencent)
 - 微信SDK：[wechat_kit](https://github.com/v7lin/wechat_kit)
@@ -50,6 +48,8 @@
 - 快速滚动可拖拽的滚动条：[draggable_scrollbar](https://github.com/fluttercommunity/flutter-draggable-scrollbar)
 - 字母索引列表：[azlistview](https://github.com/flutterchina/azlistview)
 - 初始化就能弹窗的能力：[after_layout](https://github.com/fluttercommunity/flutter_after_layout)
+- 轮播图：[flutter_swiper](https://github.com/best-flutter/flutter_swiper)
+- 新手引导页：[intro_slider](https://github.com/duytq94/flutter-intro-slider)
 
 
 ## 踩坑记录
