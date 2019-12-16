@@ -234,7 +234,11 @@ class I18N {
   }
 
   static I18N _retrieveInstance(final BuildContext context) {
-    return Localizations.of<I18N>(context, I18N);
+    I18N i18n = Localizations.of<I18N>(context, I18N);
+    if (i18n._loadedTranslations.length == 0) {
+      i18n.loadDefault(null);
+    }
+    return i18n;
   }
 }
 
