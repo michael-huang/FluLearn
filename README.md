@@ -1,4 +1,4 @@
-安卓 Native+Flutter 应用开发实战及踩坑记录
+安卓 Native+Flutter 应用开发入门资料、亲身实战及踩坑记录
 
 
 ## 入门资料
