@@ -1,15 +1,55 @@
 安卓 Native+Flutter 应用开发实战及踩坑记录
 
 
-## 参考资料
+## 入门资料
 
-- [第三方共享包检索](https://pub.dev/flutter)
-- [Flutter开发环境搭建](https://flutter.dev/docs/get-started/install)
-- [Flutter开发文档](https://flutter-io.cn/docs)
-- [FlutterAPI手册](https://api.flutter.dev)
-- [Flutter图标字体生成](http://fluttericon.com/)
-- [电子书《Flutter实战》](https://book.flutterchina.club)
+- [第三方共享包检索（国内）](https://pub.flutter-io.cn/flutter)、[第三方共享包检索（国外）](https://pub.dev/flutter)
+- [Flutter开发环境搭建（中文版）](https://flutter.cn/docs/get-started/install)、[Flutter开发环境搭建（英文版）](https://flutter.dev/docs/get-started/install)
+- [Flutter官方开发文档（中文版）](https://flutter.cn/docs)、[Flutter官方开发文档（英文版）](https://flutter.dev/docs)
+- [Flutter官方API手册（国内）](https://api.flutter-io.cn)、[Flutter官方API手册（国外）](https://api.flutter.dev)
+- [Dart与C/C++交互（国内）](https://dart.cn/guides/libraries/c-interop)、[[Dart与C/C++交互（国外）](https://dart.dev/guides/libraries/c-interop)
+- [Flutter与C/C++交互（国外）](https://flutter.dev/docs/development/platform-integration/c-interop)
+- [《Flutter实战》（在线电子书）](https://book.flutterchina.club)、[《Flutter实战》（仓库托管）](https://github.com/flutterchina/flutter-in-action)
 - [闲鱼团队技术博客Flutter专题](https://www.yuque.com/xytech/flutter)
+- [语义化版本介绍](https://semver.org/lang/zh-CN)、[依赖版本号前的插入符号(^)是什么？](https://codeday.me/bug/20190727/1549058.html)
+- 新手入门项目推荐：[flutter-go](https://github.com/alibaba/flutter-go)、[Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning)、
+[flutter_deer](https://github.com/simplezhli/flutter_deer)、[fun_android_flutter](https://github.com/phoenixsky/fun_android_flutter)
+
+## 典型库包
+
+- 键值存储：[shared_preferences](https://github.com/flutter/plugins/tree/master/packages/shared_preferences)
+- 获取APP版本信息：[package_info](https://github.com/flutter/plugins/tree/master/packages/package_info)
+- 启动任意Scheme的URL：[url_launcher](https://github.com/flutter/plugins/tree/master/packages/url_launcher)
+- 调试日志：[logger](https://github.com/leisim/logger)
+- 吐司提示：[FlutterToast](https://github.com/PonnamKarthik/FlutterToast)
+- 网络请求：[dio](https://github.com/flutterchina/dio)
+- 通用工具类：[common_utils](https://github.com/Sky24n/common_utils)
+- Markdown渲染：[flutter_markdown](https://github.com/flutter/flutter_markdown)
+- 网页加载/JsBridge：[flutter_inappwebview](https://github.com/pichillilorenzo/flutter_inappwebview)
+- 下拉刷新上拉加载：[pull_to_refresh](https://github.com/peng8350/flutter_pulltorefresh)
+- 占位/骨架屏：[content_placeholder](https://github.com/ctrleffive/content-placeholder)
+- 路由导航：[fluro](https://github.com/theyakka/fluro)
+- 图片缓存：[cached_network_image](https://github.com/renefloor/flutter_cached_network_image)
+- 图片预览：[photo_view](https://github.com/renancaraujo/photo_view)
+- 图片选择：[photo](https://github.com/CaiJingLong/flutter_photo)
+- 矢量图标：[flutter_vector_icons](https://github.com/pd4d10/flutter-vector-icons)
+- 滚轮选择：[flutter_picker](https://github.com/yangyxd/flutter_picker)
+- 仿WeUI的组件：[flutter-weu](https://github.com/allan-hx/flutter-weui)
+- 加密解密：[encrypt](https://github.com/leocavalcante/encrypt)
+- 压缩存档：[archive](https://github.com/brendan-duncan/archive)
+- 手写签名：[flutter_signature_pad](https://github.com/kiwi-bop/flutter_signature_pad)
+- SQLite数据库：[sqflite](https://github.com/tekartik/sqflite)
+- ObjectBox数据库：[objectbox-dart](https://github.com/objectbox/objectbox-dart)
+- PDF创建：[dart_pdf](https://github.com/DavBfr/dart_pdf)
+- 腾讯QQ互联SDK：[fake_tencent](https://github.com/v7lin/fake_tencent)
+- 微信SDK：[wechat_kit](https://github.com/v7lin/wechat_kit)
+- Android原生专有API映射：[flutter_android](https://github.com/drydart/flutter_android)
+- 计时器：[timer_builder](https://github.com/aryzhov/flutter-timer-builder)
+- 新功能指引：[showcaseview](https://github.com/simformsolutions/flutter_showcaseview)
+- 下载器：[flutter_downloader](https://github.com/fluttercommunity/flutter_downloader)
+- 快速滚动可拖拽的滚动条：[draggable_scrollbar](https://github.com/fluttercommunity/flutter-draggable-scrollbar)
+- 字母索引列表：[azlistview](https://github.com/flutterchina/azlistview)
+- 初始化就能弹窗的能力：[after_layout](https://github.com/fluttercommunity/flutter_after_layout)
 
 
 ## 踩坑记录
@@ -29,6 +69,16 @@ FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 ```
 因为Android SDK的位置不是默认的C:\Users\Administrator\AppData\Local\Android\Sdk导致的，新增系统环境变量“ANDROID_HOME”指向自己的Android SDK的位置，在系统环境变量“Path”增加“%ANDROID_HOME%\platform-tools”，重启Android Studio即可。
+```
+
+### Android studio 配置flutter 出现“no devices”
+
+这应该是Android的SDK路径不对引起的，解决办法：
+```aidl
+打开AndroidStudio的命令窗口（Terminal），输入指定你的AndroidSDK路径，如：
+flutter config --android-sdk /home/liyujiang/android-sdk 
+如果出现Setting "android-sdk" value to "/home/liyujiang/android-sdk".
+则代表成功，重启AndroidStudio就可以了。
 ```
 
 
@@ -62,6 +112,13 @@ subprojects {
 }
 ```
 
+~~##### Flutter I18N插件生成的“generated/i18n.dart”未包含arb中设置的语言？~~
+
+~~```~~
+~~可能是arb文件内容格式或命名不正确。必须是JSON格式，只能是一个层级的键值对，键名不能含下划线（最好用小驼峰命名法）~~
+~~```~~
+
+
 
 ##### 构建正式包报错提示“Conflicting configuration : '...' in ndk abiFilters cannot be present when splits abi filters are set : ...”
 
@@ -69,14 +126,6 @@ subprojects {
 这是因为使用带“--split-per-abi”参数（如flutter build apk --release --split-per-abi --target-platform android-arm）的构建命令和安卓原生的build.gradle里配置的“ndk.abiFilters”或“splits.abi”冲突，删掉“ndk.abiFilters”或“splits.abi”节点即可。
 目测截止2019.8.28，Flutter的发布包貌似只支持armeabi-v7a及arm64-v8a，使用“--target-platform android-x86”参数构建会报错"android-x86" is not an allowed value for option "target-platform"。
 ```
-
-
-##### Flutter I18N插件生成的“generated/i18n.dart”未包含arb中设置的语言？
-
-```
-可能是arb文件内容格式或命名不正确。必须是JSON格式，只能是一个层级的键值对，键名不能含下划线（最好用小驼峰命名法）
-```
-
 
 #### 在app/build.gradle里配置CPU架构需注意有坑
 
@@ -89,16 +138,5 @@ subprojects {
             //目前主流手机都支持armeabi和armeabi-v7a，电脑上的模拟器支持x86，mips基本不用于手机
             abiFilters "armeabi-v7a", "arm64-v8a"
         }
-```
-
-
-### Android studio 配置flutter 出现“no devices”
-
-这应该是Android的SDK路径不对引起的，解决办法：
-```aidl
-打开AndroidStudio的命令窗口（Terminal），输入指定你的AndroidSDK路径，如：
-flutter config --android-sdk /home/liyujiang/android-sdk 
-如果出现Setting "android-sdk" value to "/home/liyujiang/android-sdk".
-则代表成功，重启AndroidStudio就可以了。
 ```
 
