@@ -8,6 +8,7 @@ build/
 .buildlog/
 .history
 .svn/
+.cxx/
 
 # IntelliJ related
 *.iml
@@ -24,6 +25,7 @@ build/
 **/doc/api/
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 **/generated
 .pub-cache/

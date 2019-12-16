@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/config/constant.dart';
+import 'package:flutter_app/ffi/hello.dart';
 import 'package:flutter_app/toolkit/language_kit.dart';
 import 'package:flutter_app/toolkit/log.dart';
 import 'package:flutter_app/toolkit/overlay_style.dart';
@@ -22,6 +23,7 @@ final GlobalKey<MyAppState> appStateKey = new GlobalKey<MyAppState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   L.d('app init start');
+  DartCallC.helloWorld();
   OverlayStyle.setOverlayStyle(Brightness.dark);
   RouteNavigator.registerRouter([
     new EmptyRouter(),

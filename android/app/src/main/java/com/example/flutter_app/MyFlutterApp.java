@@ -42,6 +42,7 @@ public class MyFlutterApp extends FlutterApplication {
         super.onCreate();
         L.enable(LOG_TAG);
         L.d("Android native load finished");
+        HelloJNI.helloWorld();
         initInApplication(this);
     }
 

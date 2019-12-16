@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flustars/flustars.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_app/config/asset_dir.dart';
@@ -235,12 +234,15 @@ class I18N {
   }
 
   static I18N _retrieveInstance(final BuildContext context) {
-    return Localizations.of<I18N>(context, I18N);
+    I18N i18n = Localizations.of<I18N>(context, I18N);
+    if (i18n._loadedTranslations.length == 0) {
+      i18n.loadDefault(null);
+    }
+    return i18n;
   }
 }
 
 class I18NDelegate extends LocalizationsDelegate<I18N> {
-  static I18N _i18n;
   final Locale _locale;
   Locale _oldLocale;
 
@@ -250,26 +252,19 @@ class I18NDelegate extends LocalizationsDelegate<I18N> {
   bool isSupported(Locale locale) => true;
 
   @override
-  Future<I18N> load(Locale locale) {
-    //缓存`I18N`并在主函数中预加载避免启动黑屏问题
+  Future<I18N> load(Locale locale) async {
     bool needPreload = locale == null;
-    if (_i18n == null) {
-      _i18n = I18N();
-    }
+    I18N _i18n = I18N();
     L.d('load ? current locale is $locale, old locale is $_oldLocale, new locale is $_locale');
     bool forceChange = (_oldLocale != null && _oldLocale != _locale);
     if (needPreload || forceChange) {
       return _i18n.loadDefault(_locale);
     }
-    return SynchronousFuture(_i18n);
+    return _i18n;
   }
 
   @override
   bool shouldReload(I18NDelegate old) {
-    if (_i18n == null) {
-      L.d('i18n not loaded ,so should reload');
-      return true;
-    }
     _oldLocale = old._locale;
     L.d('should reload ? old locale is $_oldLocale, new locale is $_locale');
     return _oldLocale != _locale;
