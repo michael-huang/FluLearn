@@ -1,4 +1,4 @@
-安卓 Native+Flutter 应用开发入门资料、亲身实战及踩坑记录
+安卓 Native+Flutter 应用开发实战及踩坑记录
 
 
 ## 入门资料
@@ -34,9 +34,8 @@
 - 占位/骨架屏：[content_placeholder](https://github.com/ctrleffive/content-placeholder)
 - 路由导航：[fluro](https://github.com/theyakka/fluro)
 - 强大的图片库：[extended_image](https://github.com/fluttercandies/extended_image)
-- 矢量图标：[flutter-icons](https://github.com/flutter-studio/flutter-icons)
 - 滚轮选择器：[flutter_picker](https://github.com/yangyxd/flutter_picker)
-- 仿WeUI的组件：[flutter-weu](https://github.com/allan-hx/flutter-weui)
+- 仿WeUI的组件：[flutter-weui](https://github.com/allan-hx/flutter-weui)
 - 腾讯QQ互联SDK：[fake_tencent](https://github.com/v7lin/fake_tencent)
 - 微信SDK：[wechat_kit](https://github.com/v7lin/wechat_kit)
 - 计时器：[timer_builder](https://github.com/aryzhov/flutter-timer-builder)
@@ -140,4 +139,3 @@ subprojects {
             abiFilters "armeabi-v7a", "arm64-v8a"
         }
 ```
-
